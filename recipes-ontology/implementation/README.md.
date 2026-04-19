@@ -1,0 +1,5 @@
+# Design of the ABOX
+1.Recipes should be stuctured in recipe steps that describe a certain cooking process linked with required ingredients
+2.Each recipe step has inforamtion about the duration of the process
+3.Recipe steps for a recipe are ordered in a sequence.
+4.Ingredients are linked to processes with information about quantity, calories and diet type
