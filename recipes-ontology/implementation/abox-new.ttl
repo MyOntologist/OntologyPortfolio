@@ -1,0 +1,315 @@
+@prefix : <http://www.semanticweb.org/recipe/ontologies/2026/0/smart-recipe-101#> . .
+@prefix owl: <http://www.w3.org/2002/07/owl#> .
+@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
+@prefix xml: <http://www.w3.org/XML/1998/namespace> .
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
+@base <http://www.semanticweb.org/recipe/ontologies/2026/0/smart-recipe-101#> . .
+
+<https://www.example.org/abox> rdf:type owl:Ontology .
+
+#################################################################
+#    Object Properties
+#################################################################
+
+###  http://www.semanticweb.org/recipe/ontologies/2026/0/smart-recipe-101/hasRecipeStep
+:hasRecipeStep rdf:type owl:ObjectProperty .
+
+
+###  http://www.semanticweb.org/recipe/ontologies/2026/0/smart-recipe-101/nextRecipeStep
+:nextRecipeStep rdf:type owl:ObjectProperty .
+
+
+###  http://www.semanticweb.org/recipe/ontologies/2026/0/smart-recipe-101/referencesIngredient
+:referencesIngredient rdf:type owl:ObjectProperty .
+
+
+###  http://www.semanticweb.org/recipe/ontologies/2026/0/smart-recipe-101/usesIngredientQuantity
+:usesIngredientQuantity rdf:type owl:ObjectProperty .
+
+
+#################################################################
+#    Data properties
+#################################################################
+
+###  http://www.semanticweb.org/recipe/ontologies/2026/0/smart-recipe-101/hasCaloriesPer100g
+:hasCaloriesPer100g rdf:type owl:DatatypeProperty .
+
+
+###  http://www.semanticweb.org/recipe/ontologies/2026/0/smart-recipe-101/hasNumericValue
+:hasNumericValue rdf:type owl:DatatypeProperty .
+
+
+###  http://www.semanticweb.org/recipe/ontologies/2026/0/smart-recipe-101/hasUnit
+:hasUnit rdf:type owl:DatatypeProperty .
+
+
+###  http://www.semanticweb.org/recipe/ontologies/2026/0/smart-recipe-101/requiresMinutes
+:requiresMinutes rdf:type owl:DatatypeProperty .
+
+
+#################################################################
+#    Classes
+#################################################################
+
+###  http://www.semanticweb.org/recipe/ontologies/2026/0/smart-recipe-101/AnimalbasedIngredient
+:AnimalbasedIngredient rdf:type owl:Class .
+
+
+###  http://www.semanticweb.org/recipe/ontologies/2026/0/smart-recipe-101/MeatIngredient
+:MeatIngredient rdf:type owl:Class .
+
+
+###  http://www.semanticweb.org/recipe/ontologies/2026/0/smart-recipe-101/Quantity
+:Quantity rdf:type owl:Class .
+
+
+###  http://www.semanticweb.org/recipe/ontologies/2026/0/smart-recipe-101/Recipe
+:Recipe rdf:type owl:Class .
+
+
+###  http://www.semanticweb.org/recipe/ontologies/2026/0/smart-recipe-101/RecipeStep
+:RecipeStep rdf:type owl:Class .
+
+
+###  http://www.semanticweb.org/recipe/ontologies/2026/0/smart-recipe-101/Seasoning
+:Seasoning rdf:type owl:Class .
+
+
+###  http://www.semanticweb.org/recipe/ontologies/2026/0/smart-recipe-101/VeganIngredient
+:VeganIngredient rdf:type owl:Class .
+
+
+#################################################################
+#    Individuals
+#################################################################
+
+###  http://www.semanticweb.org/recipe/ontologies/2026/0/smart-recipe-101/AddToppings
+:AddToppings rdf:type owl:NamedIndividual ,
+                      :RecipeStep ;
+             :usesIngredientQuantity :QuantityAvocado1 ,
+                                     :QuantitySpringOnion1 ;
+             :requiresMinutes 1 .
+
+
+###  http://www.semanticweb.org/recipe/ontologies/2026/0/smart-recipe-101/Avocado
+:Avocado rdf:type owl:NamedIndividual ,
+                  :VeganIngredient ;
+         :hasCaloriesPer100g 160 .
+
+
+###  http://www.semanticweb.org/recipe/ontologies/2026/0/smart-recipe-101/Beans
+:Beans rdf:type owl:NamedIndividual ,
+                :VeganIngredient ;
+       :hasCaloriesPer100g 333 .
+
+
+###  http://www.semanticweb.org/recipe/ontologies/2026/0/smart-recipe-101/ChilliPepper
+:ChilliPepper rdf:type owl:NamedIndividual ,
+                       :VeganIngredient ;
+              :hasCaloriesPer100g 47 .
+
+
+###  http://www.semanticweb.org/recipe/ontologies/2026/0/smart-recipe-101/Cumin
+:Cumin rdf:type owl:NamedIndividual ,
+                :Seasoning ,
+                :VeganIngredient .
+
+
+###  http://www.semanticweb.org/recipe/ontologies/2026/0/smart-recipe-101/CutChilliIngredients
+:CutChilliIngredients rdf:type owl:NamedIndividual ,
+                               :RecipeStep ;
+                      :nextRecipeStep :FryBeef ;
+                      :usesIngredientQuantity :QuantityAvocado1 ,
+                                              :QuantityChilliPepper1 ,
+                                              :QuantityGarlic1 ,
+                                              :QuantityOnion1 ,
+                                              :QuantitySpringOnion1 ,
+                                              :QuantitySweetPepper1 ;
+                      :requiresMinutes 2 .
+
+
+###  http://www.semanticweb.org/recipe/ontologies/2026/0/smart-recipe-101/FiestaChilli
+:FiestaChilli rdf:type owl:NamedIndividual ,
+                       :Recipe ;
+              :hasRecipeStep :AddToppings ,
+                             :CutChilliIngredients ,
+                             :FryBeef ,
+                             :FryVegetables ,
+                             :MixInBeansAndTomatoSauce ,
+                             :SeasonAndSimmer .
+
+
+###  http://www.semanticweb.org/recipe/ontologies/2026/0/smart-recipe-101/FryBeef
+:FryBeef rdf:type owl:NamedIndividual ,
+                  :RecipeStep ;
+         :nextRecipeStep :FryVegetables ;
+         :usesIngredientQuantity :QuantityMincedBeef1 ,
+                                 :QuantityOil1 ;
+         :requiresMinutes 5 .
+
+
+###  http://www.semanticweb.org/recipe/ontologies/2026/0/smart-recipe-101/FryVegetables
+:FryVegetables rdf:type owl:NamedIndividual ,
+                        :RecipeStep ;
+               :nextRecipeStep :MixInBeansAndTomatoSauce ;
+               :usesIngredientQuantity :QuantityChilliPepper1 ,
+                                       :QuantityOnion1 ,
+                                       :QuantitySweetPepper1 ;
+               :requiresMinutes 6 .
+
+
+###  http://www.semanticweb.org/recipe/ontologies/2026/0/smart-recipe-101/Garlic
+:Garlic rdf:type owl:NamedIndividual ,
+                 :VeganIngredient ;
+        :hasCaloriesPer100g 141 .
+
+
+###  http://www.semanticweb.org/recipe/ontologies/2026/0/smart-recipe-101/MincedBeef
+:MincedBeef rdf:type owl:NamedIndividual ,
+                     :MeatIngredient ;
+            :hasCaloriesPer100g 332 .
+
+
+###  http://www.semanticweb.org/recipe/ontologies/2026/0/smart-recipe-101/MixInBeansAndTomatoSauce
+:MixInBeansAndTomatoSauce rdf:type owl:NamedIndividual ,
+                                   :RecipeStep ;
+                          :nextRecipeStep :SeasonAndSimmer ;
+                          :usesIngredientQuantity :QuantityBeans1 ,
+                                                  :QuantityTomatoSauce1 ;
+                          :requiresMinutes 1 .
+
+
+###  http://www.semanticweb.org/recipe/ontologies/2026/0/smart-recipe-101/OliveOil
+:OliveOil rdf:type owl:NamedIndividual ,
+                   :VeganIngredient ;
+          :hasCaloriesPer100g 884 .
+
+
+###  http://www.semanticweb.org/recipe/ontologies/2026/0/smart-recipe-101/Onion
+:Onion rdf:type owl:NamedIndividual ,
+                :VeganIngredient ;
+       :hasCaloriesPer100g 40 .
+
+
+###  http://www.semanticweb.org/recipe/ontologies/2026/0/smart-recipe-101/Pepper
+:Pepper rdf:type owl:NamedIndividual ,
+                 :Seasoning ,
+                 :VeganIngredient .
+
+
+###  http://www.semanticweb.org/recipe/ontologies/2026/0/smart-recipe-101/QuantityAvocado1
+:QuantityAvocado1 rdf:type owl:NamedIndividual ,
+                           :Quantity ;
+                  :referencesIngredient :Avocado ;
+                  :hasNumericValue 115 ;
+                  :hasUnit "gram" .
+
+
+###  http://www.semanticweb.org/recipe/ontologies/2026/0/smart-recipe-101/QuantityBeans1
+:QuantityBeans1 rdf:type owl:NamedIndividual ,
+                         :Quantity ;
+                :referencesIngredient :QuantityBeans1 ;
+                :hasNumericValue 250 ;
+                :hasUnit "gram" .
+
+
+###  http://www.semanticweb.org/recipe/ontologies/2026/0/smart-recipe-101/QuantityChilliPepper1
+:QuantityChilliPepper1 rdf:type owl:NamedIndividual ,
+                                :Quantity ;
+                       :referencesIngredient :ChilliPepper ;
+                       :hasNumericValue 40 ;
+                       :hasUnit "gram" .
+
+
+###  http://www.semanticweb.org/recipe/ontologies/2026/0/smart-recipe-101/QuantityGarlic1
+:QuantityGarlic1 rdf:type owl:NamedIndividual ,
+                          :Quantity ;
+                 :referencesIngredient :Garlic ;
+                 :hasNumericValue 6 ;
+                 :hasUnit "gram" .
+
+
+###  http://www.semanticweb.org/recipe/ontologies/2026/0/smart-recipe-101/QuantityMincedBeef1
+:QuantityMincedBeef1 rdf:type owl:NamedIndividual ,
+                              :Quantity ;
+                     :referencesIngredient :MincedBeef ;
+                     :hasNumericValue 200 ;
+                     :hasUnit "gram" .
+
+
+###  http://www.semanticweb.org/recipe/ontologies/2026/0/smart-recipe-101/QuantityOil1
+:QuantityOil1 rdf:type owl:NamedIndividual ,
+                       :Quantity ;
+              :referencesIngredient :OliveOil ;
+              :hasNumericValue 20 ;
+              :hasUnit "gram" .
+
+
+###  http://www.semanticweb.org/recipe/ontologies/2026/0/smart-recipe-101/QuantityOnion1
+:QuantityOnion1 rdf:type owl:NamedIndividual ,
+                         :Quantity ;
+                :referencesIngredient :Onion ;
+                :hasNumericValue 150 ;
+                :hasUnit "gram" .
+
+
+###  http://www.semanticweb.org/recipe/ontologies/2026/0/smart-recipe-101/QuantitySpringOnion1
+:QuantitySpringOnion1 rdf:type owl:NamedIndividual ,
+                               :Quantity ;
+                      :referencesIngredient :SpringOnion ;
+                      :hasNumericValue 19 ;
+                      :hasUnit "gram" .
+
+
+###  http://www.semanticweb.org/recipe/ontologies/2026/0/smart-recipe-101/QuantitySweetPepper1
+:QuantitySweetPepper1 rdf:type owl:NamedIndividual ,
+                               :Quantity ;
+                      :referencesIngredient :SweetPepper ;
+                      :hasNumericValue 250 ;
+                      :hasUnit "gram" .
+
+
+###  http://www.semanticweb.org/recipe/ontologies/2026/0/smart-recipe-101/QuantityTomatoSauce1
+:QuantityTomatoSauce1 rdf:type owl:NamedIndividual ,
+                               :Quantity ;
+                      :referencesIngredient :TomatoSauce ;
+                      :hasNumericValue 300 ;
+                      :hasUnit "gram" .
+
+
+###  http://www.semanticweb.org/recipe/ontologies/2026/0/smart-recipe-101/Salt
+:Salt rdf:type owl:NamedIndividual ,
+               :Seasoning ,
+               :VeganIngredient .
+
+
+###  http://www.semanticweb.org/recipe/ontologies/2026/0/smart-recipe-101/SeasonAndSimmer
+:SeasonAndSimmer rdf:type owl:NamedIndividual ,
+                          :RecipeStep ;
+                 :nextRecipeStep :AddToppings ;
+                 :usesIngredientQuantity :Cumin ,
+                                         :Pepper ,
+                                         :Salt ;
+                 :requiresMinutes 10 .
+
+
+###  http://www.semanticweb.org/recipe/ontologies/2026/0/smart-recipe-101/SpringOnion
+:SpringOnion rdf:type owl:NamedIndividual ,
+                      :VeganIngredient ;
+             :hasCaloriesPer100g 34 .
+
+
+###  http://www.semanticweb.org/recipe/ontologies/2026/0/smart-recipe-101/SweetPepper
+:SweetPepper rdf:type owl:NamedIndividual ,
+                      :VeganIngredient ;
+             :hasCaloriesPer100g 40 .
+
+
+###  http://www.semanticweb.org/recipe/ontologies/2026/0/smart-recipe-101/TomatoSauce
+:TomatoSauce rdf:type owl:NamedIndividual ,
+                      :VeganIngredient ;
+             :hasCaloriesPer100g 29 .
+
+
+###  Generated by the OWL API (version 4.5.29.2024-05-13T12:11:03Z) https://github.com/owlcs/owlapi
